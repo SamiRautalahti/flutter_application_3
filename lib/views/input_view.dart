@@ -43,6 +43,7 @@ class InputFormState extends State<InputForm> {
   TodoItem? item;
   bool isEdit = false;
   int id = 0;
+  String? fbid;
 
   InputFormState(TodoItem? item) {
     if (item != null) {
@@ -52,6 +53,7 @@ class InputFormState extends State<InputForm> {
       deadline = item.deadline;
       isEdit = true;
       id = item.id;
+      fbid = item.fbid;
     }
   }
 
@@ -127,7 +129,8 @@ class InputFormState extends State<InputForm> {
                         title: title,
                         description: description,
                         deadline: deadline,
-                        done: done);
+                        done: done,
+                        fbid: fbid);
                     // Tallennetaan uusi item
                     if (!isEdit) {
                       Provider.of<TodoListManager>(context, listen: false)

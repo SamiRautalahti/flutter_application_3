@@ -45,6 +45,8 @@ class TodoListManager extends ChangeNotifier {
   Future<void> add(TodoItem item) async {
     log("Lisätään item");
     //item.id = await dbHelper.insert(item);
+    item.created = DateTime.now();
+    item.updated = DateTime.now();
     fbHelper.saveTodoItem(item);
     _items.add(item);
 
@@ -54,6 +56,7 @@ class TodoListManager extends ChangeNotifier {
   void delete(TodoItem item) {
     log("Poistetaan item");
     //dbHelper.delete(item.id);
+    fbHelper.deleteTodoItem(item);
     _items.remove(item);
 
     notifyListeners();
@@ -72,8 +75,10 @@ class TodoListManager extends ChangeNotifier {
       oldItem.description = item.description;
       oldItem.deadline = item.deadline;
       oldItem.done = item.done;
+      oldItem.updated = DateTime.now();
 
       //dbHelper.update(item);
+      fbHelper.updateTodoItem(item);
       notifyListeners();
     }
   }

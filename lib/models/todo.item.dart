@@ -5,13 +5,17 @@ class TodoItem {
   DateTime deadline = DateTime.now();
   bool done = false;
   String? fbid;
+  String? owner;
+  DateTime? created;
+  DateTime? updated;
 
   TodoItem(
       {this.id = 0,
       required this.title,
       this.description = "",
       required this.deadline,
-      this.done = false});
+      this.done = false,
+      this.fbid});
 
   Map<String, dynamic> toMap() {
     return {
@@ -33,5 +37,7 @@ class TodoItem {
         'description': description,
         'deadline': deadline.toString(),
         'done': done,
+        'created': created.toString(),
+        'updated': updated.toString()
       };
 }
