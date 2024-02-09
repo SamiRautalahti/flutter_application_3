@@ -104,8 +104,11 @@ class TodoListManager extends ChangeNotifier {
 
   void loadFromFirebase() async {
     final list = await fbHelper.getData();
+    int id = 1;
     for (TodoItem item in list) {
+      item.id = id;
       _items.add(item);
+      id++;
     }
     notifyListeners();
   }

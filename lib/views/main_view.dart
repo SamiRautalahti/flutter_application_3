@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/models/todo.item.dart';
 import 'package:flutter_application_3/models/todo_list_manager.dart';
+import 'package:flutter_application_3/views/components/page_transition_builder.dart';
 import 'package:flutter_application_3/views/info_view.dart';
 import 'package:flutter_application_3/views/input_view.dart';
 import 'package:intl/intl.dart';
@@ -22,9 +23,7 @@ class MainView extends StatelessWidget {
                 IconButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const InfoView()));
+                          context, pageTransitionBuilder(const InfoView()));
                     },
                     icon: const Icon(Icons.info)),
                 IconButton(
