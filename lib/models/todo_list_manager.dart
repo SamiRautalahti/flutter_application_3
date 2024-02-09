@@ -47,6 +47,7 @@ class TodoListManager extends ChangeNotifier {
     //item.id = await dbHelper.insert(item);
     item.created = DateTime.now();
     item.updated = DateTime.now();
+    item.id = _items[_items.length - 1].id + 1;
     fbHelper.saveTodoItem(item);
     _items.add(item);
 
